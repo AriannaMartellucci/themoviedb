@@ -8,8 +8,8 @@ module.exports = function (app, express) {
     app.use('/images', express.static(path.join(__dirname, '..', '..', 'public', 'images')));
     app.use('/css', express.static(path.join(__dirname, '..', '..', 'public', 'css')));
     app.use('/js', express.static(path.join(__dirname, '..', '..', 'public', 'js')));
-    app.use('/angular', express.static(path.join(__dirname, '..','node_modules','angular')));
-    app.use('/jquery', express.static(path.join(__dirname,'..','node_modules','jquery')));
+    app.use('/angular', express.static(path.join(__dirname, '..','..','node_modules','angular')));
+    app.use('/jquery', express.static(path.join(__dirname,'..','..','node_modules','jquery')));
     app.use('/app', express.static(path.join(__dirname, '..','..','public','app')));
     
     
