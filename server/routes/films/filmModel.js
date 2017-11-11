@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+console.log('model loaded');
+
+var path = require('path');
+var Genere = require(path.join(__dirname, '..', 'generi', 'generiModels.js'));
 
 var Schema = mongoose.Schema;
 
@@ -38,7 +42,7 @@ var filmSchema = new Schema ( {
     },
     genre_ids:[
         {
-            type: Number,
+            type: [Number],
             required: true
         }
     ],
@@ -57,27 +61,28 @@ var filmSchema = new Schema ( {
         require: true
     }
 
-})
+}, { toJSON: { virtuals: true } } ); 
+
+filmSchema.virtual('generi_film', {
+    ref: 'generi',
+    localField: 'genre_ids',
+    foreignField: 'id',
+    justOne: false
+});
 
 
 
 
-var Film = mongoose.model('film',filmSchema);
+var Film = mongoose.model('film', filmSchema);
 
-var film1 = new Film({
-    titolo: 'alla ricerca di nemo'
-})
+// var film1 = new Film({
+//     titolo: 'alla ricerca di nemo'
+// })
 
 
 module.exports = Film;
 
-// libro1.save()
-//     .then(function(){
-//         console.log('libro 1 inserito nel db');
-//     })
-//     .catch(function(){
 
-//     })
 
     
 
