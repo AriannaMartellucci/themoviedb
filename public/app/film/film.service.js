@@ -7,10 +7,11 @@ angular.module("app").service("filmSrv", function ($http) {
             method: 'GET',
             url: url,
         });
+    };
 
 
     return {
         getAll: getAll
         }
     }
-});
+);
