@@ -4,7 +4,7 @@ module.exports = function (app, express) {
     var bodyParser = require('body-parser');
     app.use(bodyParser.json());
 
-    app.use('/bootstrap', express.static(path.join(__dirname, '..', 'node_modules', 'bootstrap')));
+    app.use('/bootstrap', express.static(path.join(__dirname, '..','..', 'node_modules', 'bootstrap')));
     app.use('/images', express.static(path.join(__dirname, '..', '..', 'public', 'images')));
     app.use('/css', express.static(path.join(__dirname, '..', '..', 'public', 'css')));
     app.use('/js', express.static(path.join(__dirname, '..', '..', 'public', 'js')));

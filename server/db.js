@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 
+// mongoose.connect('mongodb://localhost:27017/dblibrary', //lavora in locale
 mongoose.connect('mongodb://marcellaina:frifrifri2@ds257245.mlab.com:57245/themoviedb', 
 {useMondoClient: true}, 
 function(err){
