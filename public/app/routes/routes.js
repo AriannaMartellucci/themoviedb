@@ -9,28 +9,38 @@ angular.module('app')
             $stateProvider  
                 .state('/', { //definiamo tutti i nostri stati 
                     url : '/',
+                    resolve : {
+                        generi : function (generiSrv) {
+                            
+                            return generiSrv.generiGetAll();
+                        }
+                    },
                     views: {
                         'navbar' : {
                             templateUrl : '/app/UI/navbar.html',
-                            controller : 'navCtrl'
+                            controller : 'generiCtrl'
                         },
                         'contenuto' : {
                             templateUrl : '/app/resource/home/home.template.html'
                         },
                     } 
                 })
-                .state('films', { //definiamo tutti i nostri stati 
+                .state('films', { 
                     url : '/films',
                     resolve : {
                         films : function (filmSrv) {
                             
                             return filmSrv.getAll();
+                        },
+                        generi : function (generiSrv) {
+                            
+                            return generiSrv.generiGetAll();
                         }
                     },
                     views: {
                         'navbar' : {
                             templateUrl : '/app/UI/navbar.html',
-                            controller : 'navCtrl'
+                            controller : 'generiCtrl'
                         },
                         'contenuto' : {
                             templateUrl : '/app/resource/films/film.template.html',
@@ -39,18 +49,22 @@ angular.module('app')
                     }
                     
                 })
-                .state('film', { //definiamo tutti i nostri stati 
+                .state('film', { 
                     url : '/film/{id}',
                     resolve : {
                         film : function (filmSrv, $stateParams) {
                             
                             return filmSrv.getOne($stateParams.id);
+                        },
+                        generi : function (generiSrv) {
+                            
+                            return generiSrv.generiGetAll();
                         }
                     },
                     views: {
                         'navbar' : {
                             templateUrl : '/app/UI/navbar.html',
-                            controller : 'navCtrl'
+                            controller : 'generiCtrl'
                         },
                         'contenuto' : {
                             templateUrl : '/app/resource/films/one.template.html',
@@ -60,5 +74,52 @@ angular.module('app')
                     }
                     
                 })
+
+                .state('inseriscifilm', { 
+                    url : '/films/inserisci',
+                    resolve : {
+                        generi : function (generiSrv) {
+                            return generiSrv.generiGetAll();
+                        }
+                    },
+                    views: {
+                        'navbar' : {
+                            templateUrl : '/app/UI/navbar.html',
+                            controller : 'generiCtrl'
+                        },
+                        'contenuto' : {
+                            templateUrl : '/app/resource/films/nuovoFilm.template.html',
+                            controller : 'nuovofilmCtrl'
+                        },
+                    }
+                    
+                })
+
+                .state('upfilm', { 
+                    url : '/film/modifica/{title}/{id}',
+                    resolve : {
+                        film : function (filmSrv, $stateParams) {
+                            return filmSrv.getOne($stateParams.id);
+                        },
+                        generi : function (generiSrv) {
+                            return generiSrv.generiGetAll();
+                        }
+                    },
+                    views: {
+                        'navbar' : {
+                            templateUrl : '/app/UI/navbar.html',
+                            controller : 'generiCtrl'
+                        },
+                        'contenuto' : {
+                            templateUrl : '/app/resource/films/upfilm.template.html',
+                            controller : 'upfilmCtrl'
+                        },
+                    }
+                    
+                })
+
+                
+                    
+                
         });
     

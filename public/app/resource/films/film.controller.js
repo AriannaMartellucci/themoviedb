@@ -1,47 +1,17 @@
-angular.module("app").controller("filmCtrl", function($scope, films) { 
+angular.module("app").controller("filmCtrl", function($scope, films, filmSrv) { 
 
     console.log('filmController OK');
+    
+    films.data.forEach(film => {
+        if(!film.poster_path.includes('https')){
+            film.poster_path = 'https://image.tmdb.org/t/p/w500/' + film.poster_path;
+        }
+    });
 
     $scope.films = films.data;
-
-   
+    
     
 
+            
 
-    // filmSrv.getAll() 
-    //     .then(function(res) { 
-    //         $scope.films = res.data; 
-    //     }) 
-    //     .catch(function(err) { 
-    //         return err; 
-    //     }),
-
-
-    
-
-    // $scope.dettagliofilm = function(index, id){
-
-    //     filmSrv.getOne(id) 
-    //     .then(function(res) { 
-    //         $scope.film = res.data;
-    //         $scope.filmBefore = $scope.films.slice(0,index);
-    //         $scope.filmAfter = $scope.films.slice(index+1,$scope.film.lenght)
-    //         })
-         
-    //     .catch(function(err) { 
-    //         return err;  
-    //     }),
-
-    //     $scope.visibile = !$scope.visibile;
-        
-
-       
-        
-    // }
-
-    
-
-    
-
-    
 });

@@ -1,0 +1,74 @@
+<div class="container">
+
+    <h1>Inserisci un nuovo film</h1>
+
+    <form class="form">
+        <div class="form-group">
+            <label for="titolofilm">Titolo</label>
+            <input ng-model="nuovofilm.titolofilm" type="text" class="form-control" id="titolofilm" placeholder="inserisci il tiitolo del film">
+        </div>
+        <div class="form-group">
+            <label for="poster">Poster</label>
+            <input ng-model="nuovofilm.posterfilm" type="text" class="form-control" id="poster" placeholder="inserisci l'url dell'immagine del film">
+        </div>
+        <div class="form-group">
+            <label>Genere</label>
+            <select 
+                ng-change="addselectgen(addgen)" 
+                class="form-control" 
+                ng-options="gen.name for gen in generi" 
+                ng-model="addgen"
+            ></select>
+        </div>
+        <div>
+            <a 
+                ng-click="deladdgen($index)"
+                ng-repeat="gen in selectgen track by $index" 
+                class="btn btn-primary btn-sm"
+            >{{gen.name}}</a>
+        </div>
+        <div class="form-group">
+            <label for="trama">Trama</label>
+            <textarea ng-model="nuovofilm.tramafilm" class="form-control" rows="5"></textarea>
+        </div>
+    </form>
+
+
+    <div style="text-align:center">
+        <button ng-click="piuimput()" type="button" class="btn btn-default btn-xs">inserisci più dettagli</button>
+    </div>
+
+
+    <form ng-show="visibile">
+        <div class="form-group">
+            <label for="trailler">Trailler</label>
+            <input ng-model="nuovofilm.trailler" type="text" class="form-control" id="trailler" placeholder="inserisci l'URL del trailler del film">
+        </div>
+        <div class="form-group">
+            <label for="poster">Titolo originale</label>
+            <input ng-model="nuovofilm.origtit" type="text" class="form-control" id="poster" placeholder="inserisci il titolo del film in lingua originale">
+        </div>
+        <div class="form-group">
+            <label for="poster">Lingua originale</label>
+            <input ng-model="nuovofilm.origling" type="text" class="form-control" id="poster" placeholder="inserisci la lignua originale del film">
+        </div>
+        <div class="form-group">
+            <label for="poster">Anno di uscita</label>
+            <input ng-model="nuovofilm.anno"type="text" class="form-control" id="poster" placeholder="inserisci la lignua originale del film">
+        </div>
+        <div class="form-group">
+            <label>Film per adulti?</label>
+                <input ng-model="nuovofilm.adult" type="radio">
+                si
+                <input ng-model="nuovofilm.adult" type="radio" checked>
+                no   
+        </div>
+    </form>
+
+
+    <div style="text-align:center">
+        <button ng-click="inseriscifilm(nuovofilm)" type="submit" class="btn btn-default">Inserisci</button>
+    </div>
+
+
+</div>

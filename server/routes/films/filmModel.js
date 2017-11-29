@@ -14,8 +14,7 @@ var filmSchema = new Schema ( {
         default : 0
     },
     video:{
-        type: Boolean,
-        default: false
+        type: String,
     },
     vote_avarage:{
         type: Number,
@@ -34,11 +33,9 @@ var filmSchema = new Schema ( {
     },
     original_language: {
         type: String,
-        required: true
     },
     original_title: {
         type: String,
-        required: true
     },
     genre_ids:[
         {
@@ -54,11 +51,12 @@ var filmSchema = new Schema ( {
         default: false
     },
     overview: {
-        type: String
+        type: String,
+        required: true
     },
     release_data: {
         type: String,
-        require: true
+        require: false
     }
 
 }, { toJSON: { virtuals: true } } ); 

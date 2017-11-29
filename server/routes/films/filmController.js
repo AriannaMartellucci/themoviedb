@@ -116,27 +116,30 @@ module.exports = (function(){
         var updateVote = function(req,res) {
             Film.findById(req.params.id)
             .exec()
-            .then(function (films) {
-                var count= films.vote_count;
+            .then(function (film) {
+                var count= film.vote_count;
                     console.log(count);
                 var voti= count+1;
                     console.log(voti);
-                var media= films.vote_average;
+                var media= film.vote_average;
                     console.log(media);
                 var nuovovoto=req.body.voto_nostro;
                     console.log(nuovovoto);
                 var calcolo= ((media*count)+nuovovoto)/voti;
                     console.log(calcolo);
-                films.vote_average=calcolo;
-                films.vote_count=voti;
+                film.vote_average=calcolo;
+                film.vote_count=voti;              
+                
                 return film.save();
                 
             })
             .then(function(film){
+                console.log(film);                
                 res.status(200).json(film);
             })
             
             .catch(function (err) {
+                console.log(err);
                 res.status(500).send(err);
             });
         }

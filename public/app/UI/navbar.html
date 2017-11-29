@@ -22,30 +22,16 @@
         <li ui-sref-active="active">
           <a ui-sref="serietv">Serie TV</a>
         </li>
-        <li ui-sref-active="active" class="dropdown">
-          <a ui-sref="generi" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Generi
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Generi</a>
-            </li>
-            <li>
-              <a href="#">Registi</a>
-            </li>
-            <li>
-              <a href="#">Something else here</a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <a href="#">Separated link</a>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li>
-              <a href="#">One more separated link</a>
-            </li>
-          </ul>
-        </li>
+          <li> 
+            <select
+            ng-model="gen"
+            ng-change="filtragenere()"
+            ng-options="gen.name for gen in generi" ></select>
+
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="inseriscifilm">Inserisci Film</a>
+          </li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">

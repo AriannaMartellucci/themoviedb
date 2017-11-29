@@ -1,62 +1,16 @@
 <div class="container">
 
 
-    <!-- <div ng-controller="filmCtrl"> -->
+
         <h1>film</h1>
 
 <film-card 
-    ui-sref="film({id:film._id})" 
+    ui-sref="film({id:film._id})"
     film="film" 
-    ng-repeat="film in films"
-></film-card>
-
-    
+    ng-repeat="film in films | generi: generefiltrareid"> <!--generi(films, generifiltrare)-->
+</film-card>
 
 
-    <!-- <div ng-show="visibile">
-        <div ng-repeat="f in filmBefore track by $index">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <img id="poster" ng-src="https://image.tmdb.org/t/p/w500{{f.poster_path}}" height="300px">
-            </div>
-        </div>
+</div><!-- chiusura filmCtrl -->
 
-        <div class="container-fluid">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <img id="poster" ng-src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" height="300px">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-12 uno">
-                    <h1>{{film.title}}</h1>
-                    <p>{{film.overview}}</p>
-                </div>
-            </div>
-        </div>
-
-        <div ng-repeat="f in filmAfter track by $index">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <img id="poster" ng-src="https://image.tmdb.org/t/p/w500{{f.poster_path}}" height="300px">
-            </div>
-        </div>
-    </div> -->
-    <!-- chiusura dettagliofilm -->
-
-
-
-
-    <!-- <div class="row">
-        <div ng-repeat="film in films track by $index">
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <img ng-click="dettagliofilm($index,film.id)" id="poster" ng-src="https://image.tmdb.org/t/p/w500{{film.poster_path}}" height="300px">
-            </div>
-        </div> -->
-    <!-- chiusura repeat -->
-    <!-- </div> -->
-    <!-- chiusura row -->
-
-
-
-</div>
-<!-- chiusura filmCtrl -->
-
-</div>
-<!-- chiusura container -->
+</div><!-- chiusura container -->
